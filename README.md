@@ -26,6 +26,7 @@ npx http-server -p 8000
 Notes:
 - `database.html` fetches `data/products.json` client-side, so you should serve the site via a local server to avoid file CORS limitations.
 - Add or edit entries in `data/products.json` to update the database. Each product should include: id, name, type, characters (array of names), price, image, description, note, buy_link.
+- Add or edit entries in `data/products.json` to update the database. Each product should include: id, name, type, characters (array of names), artist (optional), price, image, description, note, buy_link.
  - The `database.html` page supports filtering by `type` and by `characters` (e.g., Qifrey, Olruggio, Coco, Agott, Richeh, Knights Moralis, Brimmed Hats, Others). You can add these to products in `data/products.json`.
 
 Troubleshooting: JSON changes don't appear on the site

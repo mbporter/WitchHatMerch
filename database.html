@@ -57,6 +57,7 @@
       <button class="modal-close" aria-label="Close">×</button>
       <div class="modal-content">
         <h3 id="modal-title"></h3>
+        <p id="modal-artist" class="artist"></p>
         <p class="modal-body"></p>
         <p><a id="modal-buy" class="btn" href="#" target="_blank" rel="noopener">Where to buy</a></p>
       </div>
@@ -204,6 +205,7 @@
         <li class="product-card">
           <img loading="lazy" src="${p.image}" alt="${escapeHtml(p.name)} image">
           <h3>${escapeHtml(p.name)} <span class="tag tag-type">${escapeHtml(p.type)}</span></h3>
+          <p class="artist">By <strong>${escapeHtml(p.artist || 'Unknown')}</strong></p>
           <p class="note">${escapeHtml(p.description)}</p>
           <p class="where">Type: <strong>${escapeHtml(p.type)}</strong> · Price: <strong>$${p.price}</strong></p>
           <p>${(p.characters || []).map(c => `<span class="tag tag-char">${escapeHtml(c)}</span>`).join(' ')}</p>
@@ -218,7 +220,21 @@
           const item = products.find(pp => pp.id === id);
           if(!item) return;
           modalTitle.textContent = item.name;
+          document.getElementById('modal-artist').textContent = item.artist ? 'By ' + item.artist : '';
           modalBody.textContent = item.note || item.description || '';
+          // show artist also in modal
+          if(item.artist){
+            const artistLine = document.createElement('p');
+            artistLine.className = 'artist';
+            artistLine.textContent = 'By ' + item.artist;
+            // insert after title
+            const titleEl = document.getElementById('modal-title');
+            if(titleEl.nextSibling){
+              titleEl.parentNode.insertBefore(artistLine, titleEl.nextSibling);
+            } else {
+              titleEl.parentNode.appendChild(artistLine);
+            }
+          }
           modalBuy.href = item.buy_link || '#';
           modal.setAttribute('aria-hidden','false');
           modal.classList.add('open');
@@ -233,7 +249,7 @@
     document.querySelectorAll('.modal-close, .modal').forEach(el => {
       el.addEventListener('click', (e)=>{ if(e.target === el || el.classList.contains('modal-close')) closeModal(); });
     });
-    function closeModal(){ modal.setAttribute('aria-hidden','true'); modal.classList.remove('open'); }
+    function closeModal(){ modal.setAttribute('aria-hidden','true'); modal.classList.remove('open'); document.getElementById('modal-artist').textContent = ''; }
 
     function escapeHtml(unsafe){ return unsafe.replace(/[&<"']/g, function(m){return {'&':'&amp;','<':'&lt;','"':'&quot;',"'":"&#039;"}[m]; }); }
   </script>
