@@ -1,14 +1,14 @@
 [
   {
     "id": "p1",
-    "name": "Apprentice Hat Plush",
-    "type": "Plush",
-    "characters": ["Brimmed Hats","Others"],
-    "price": 28,
-    "image": "https://via.placeholder.com/520x390?text=Apprentice+Hat+Plush",
-    "description": "A plush version of the apprentice’s hat, soft and perfect for display.",
-    "note": "Bought this at a fan convention — great detail and soft fabric.",
-    "buy_link": "https://example.com/hat-plush"
+    "name": "Witch Hat Atelier Themed Ita Bag",
+    "type": "Bags",
+    "characters": ["Others"],
+    "price": 100,
+    "image": "./images/ita_bag.jpg",
+    "description": "A fan made Witch hat Atelier themed ita bag! Beautiful embroidery and so worth it.",
+    "note": "Bought a year ish over ago and never regretted it always adding more merch to it and love to show it off!.",
+    "buy_link": "https://x.com/wysteribun"
   },
   {
     "id": "p2",
