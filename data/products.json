@@ -3,7 +3,7 @@
     "id": "p1",
     "name": "Witch Hat Atelier Themed Ita Bag",
     "type": "Bags",
-    "characters": ["Others"],
+    "characters": ["Others","Agott"],
     "price": 100,
     "image": "./images/ita_bag.jpg",
     "description": "A fan made Witch hat Atelier themed ita bag! Beautiful embroidery and so worth it.",
