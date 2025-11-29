@@ -43,6 +43,12 @@ body{
 .product-card .where{font-size:0.95rem;margin:0 0 .75rem}
 .product-card .where a{color:var(--teal);text-decoration:underline}
 
+.filters{display:flex;gap:.5rem}
+.filters .btn{padding:.45rem .6rem;border-radius:999px;font-size:0.95rem}
+
+/* small tag for type */
+.tag{display:inline-block;padding:.2rem .45rem;border-radius:999px;background:var(--border);color:var(--text);font-size:0.82rem}
+
 .btn{background:var(--teal);color:#fff;padding:.55rem .85rem;border-radius:8px;border:0;cursor:pointer;text-decoration:none}
 .btn.outline{background:transparent;border:1px solid var(--border);color:var(--text)}
 .btn:focus{outline:3px solid rgba(14,165,164,0.18)}

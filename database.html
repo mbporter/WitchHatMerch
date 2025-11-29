@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Witch Hat Atelier — Fan Merch Database</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="A fan-curated database of Witch Hat Atelier merch you can filter by type (Bags, Keychains, Stickers, etc).">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Witch Hat Atelier — Fan Picks</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="database.html">Database</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h1 class="section-title">Fan Merch Database</h1>
+      <p class="lede">Browse the curated list, filter by type, or search for something specific. Click a product to see seller notes and where to buy.</p>
+
+      <div class="filters" aria-label="Type filters" style="margin:1rem 0 1.25rem;display:flex;gap:.5rem;flex-wrap:wrap"></div>
+
+      <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1rem">
+        <label for="search" class="sr-only">Search products</label>
+        <input id="search" placeholder="Search products, e.g. 'pin' or 'plush'" style="padding:.5rem;border:1px solid var(--border);border-radius:8px;flex:1">
+        <button id="clear-filters" class="btn outline">Reset</button>
+      </div>
+
+      <ul id="results" class="product-grid" aria-live="polite" aria-label="Results"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Fan-made template — not official. &copy; <span id="year"></span></p>
+      <p class="socials">Share: <a href="#">Twitter</a> · <a href="#">Instagram</a></p>
+    </div>
+  </footer>
+
+  <!-- Modal reused from index; small details modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-content">
+        <h3 id="modal-title"></h3>
+        <p class="modal-body"></p>
+        <p><a id="modal-buy" class="btn" href="#" target="_blank" rel="noopener">Where to buy</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const results = document.getElementById('results');
+    const filtersEl = document.querySelector('.filters');
+    const searchEl = document.getElementById('search');
+    const clearBtn = document.getElementById('clear-filters');
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.querySelector('.modal-body');
+    const modalBuy = document.getElementById('modal-buy');
+
+    let products = [];
+    let activeTypes = new Set();
+
+    fetch('data/products.json')
+      .then(r => r.json())
+      .then(data => {
+        products = data;
+        renderFilters();
+        renderResults();
+      }).catch(err => {
+        results.innerHTML = '<li class="product-card">Failed to load products (try serving this site with a simple web server).</li>';
+        console.error(err);
+      });
+
+    function renderFilters(){
+      // Unique types from products
+      const types = [...new Set(products.map(p => p.type))].sort();
+      filtersEl.innerHTML = '';
+      const allFilter = document.createElement('button');
+      allFilter.className = 'btn outline';
+      allFilter.textContent = 'All';
+      allFilter.addEventListener('click', ()=>{ activeTypes.clear(); renderResults(); updateFilterUI(); });
+      filtersEl.appendChild(allFilter);
+
+      types.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = 'btn outline';
+        btn.textContent = t;
+        btn.dataset.type = t;
+        btn.addEventListener('click', ()=>{
+          if(activeTypes.has(t)) activeTypes.delete(t); else activeTypes.add(t);
+          renderResults();
+          updateFilterUI();
+        });
+        filtersEl.appendChild(btn);
+      });
+    }
+
+    function updateFilterUI(){
+      document.querySelectorAll('.filters .btn').forEach(btn => {
+        const type = btn.dataset.type;
+        if(type && activeTypes.has(type)){
+          btn.classList.remove('outline');
+          btn.style.background = 'var(--teal)';
+          btn.style.color = '#fff';
+        } else {
+          btn.classList.add('outline');
+          btn.style.background = '';
+          btn.style.color = '';
+        }
+      });
+    }
+
+    function renderResults(){
+      const query = searchEl.value.trim().toLowerCase();
+      let items = products.filter(p => {
+        const matchesType = activeTypes.size === 0 || activeTypes.has(p.type);
+        const matchesSearch = query === '' || (p.name + ' ' + p.description + ' ' + p.type).toLowerCase().includes(query);
+        return matchesType && matchesSearch;
+      });
+
+      if(items.length === 0){
+        results.innerHTML = '<li class="product-card">No items match your filters.</li>';
+        return;
+      }
+
+      results.innerHTML = items.map(p => `
+        <li class="product-card">
+          <img loading="lazy" src="${p.image}" alt="${escapeHtml(p.name)} image">
+          <h3>${escapeHtml(p.name)} <span class="tag">${escapeHtml(p.type)}</span></h3>
+          <p class="note">${escapeHtml(p.description)}</p>
+          <p class="where">Type: <strong>${escapeHtml(p.type)}</strong> · Price: <strong>$${p.price}</strong></p>
+          <p><button class="btn outline details" data-product-id="${escapeHtml(p.id)}">Details</button></p>
+        </li>
+      `).join('');
+
+      // Attach detail buttons
+      document.querySelectorAll('.details').forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+          const id = btn.dataset.productId;
+          const item = products.find(pp => pp.id === id);
+          if(!item) return;
+          modalTitle.textContent = item.name;
+          modalBody.textContent = item.note || item.description || '';
+          modalBuy.href = item.buy_link || '#';
+          modal.setAttribute('aria-hidden','false');
+          modal.classList.add('open');
+        });
+      });
+    }
+
+    searchEl.addEventListener('input', ()=>renderResults());
+    clearBtn.addEventListener('click', ()=>{ activeTypes.clear(); searchEl.value = ''; renderResults(); updateFilterUI(); });
+
+    // Modal close
+    document.querySelectorAll('.modal-close, .modal').forEach(el => {
+      el.addEventListener('click', (e)=>{ if(e.target === el || el.classList.contains('modal-close')) closeModal(); });
+    });
+    function closeModal(){ modal.setAttribute('aria-hidden','true'); modal.classList.remove('open'); }
+
+    function escapeHtml(unsafe){ return unsafe.replace(/[&<"']/g, function(m){return {'&':'&amp;','<':'&lt;','"':'&quot;',"'":"&#039;"}[m]; }); }
+  </script>
+</body>
+</html>

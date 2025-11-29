@@ -1,0 +1,82 @@
+[
+  {
+    "id": "p1",
+    "name": "Apprentice Hat Plush",
+    "type": "Plush",
+    "price": 28,
+    "image": "https://via.placeholder.com/520x390?text=Apprentice+Hat+Plush",
+    "description": "A plush version of the apprentice’s hat, soft and perfect for display.",
+    "note": "Bought this at a fan convention — great detail and soft fabric.",
+    "buy_link": "https://example.com/hat-plush"
+  },
+  {
+    "id": "p2",
+    "name": "Witch Hat Tee",
+    "type": "Apparel",
+    "price": 22,
+    "image": "https://via.placeholder.com/520x390?text=Witch+Hat+Tee",
+    "description": "Comfortable cotton tee featuring a discreet hat motif.",
+    "note": "Runs slightly large; recommended to size down.",
+    "buy_link": "https://example.com/tee"
+  },
+  {
+    "id": "p3",
+    "name": "Apprentice Pin Set",
+    "type": "Pins",
+    "price": 14,
+    "image": "https://via.placeholder.com/520x390?text=Pin+Set",
+    "description": "Three enamel pins, each representing a favorite motif.",
+    "note": "Seller offered bundled shipping — I combined these with other small items.",
+    "buy_link": "https://example.com/pins"
+  },
+  {
+    "id": "p4",
+    "name": "Grimoire Bag",
+    "type": "Bags",
+    "price": 45,
+    "image": "https://via.placeholder.com/520x390?text=Grimoire+Bag",
+    "description": "Canvas tote with Grimoire print — durable for conventions and daily use.",
+    "note": "Handles are reinforced and the art holds up to washing.",
+    "buy_link": "https://example.com/bag"
+  },
+  {
+    "id": "p5",
+    "name": "Charm Keychain",
+    "type": "Keychains",
+    "price": 6,
+    "image": "https://via.placeholder.com/520x390?text=Charm+Keychain",
+    "description": "A little copper keychain with a hat charm — great for keys or zippers.",
+    "note": "Tiny but sturdy; the clasp is solid.",
+    "buy_link": "https://example.com/keychain"
+  },
+  {
+    "id": "p6",
+    "name": "Sticker Pack: Atelier",
+    "type": "Stickers",
+    "price": 8,
+    "image": "https://via.placeholder.com/520x390?text=Sticker+Pack",
+    "description": "A set of durable vinyl stickers for water bottles and laptops.",
+    "note": "Colors are vibrant and they are waterproof.",
+    "buy_link": "https://example.com/stickers"
+  },
+  {
+    "id": "p7",
+    "name": "Apprentice Scarf",
+    "type": "Apparel",
+    "price": 19,
+    "image": "https://via.placeholder.com/520x390?text=Apprentice+Scarf",
+    "description": "A cozy scarf with a subtle pattern inspired by the manga.",
+    "note": "Lightweight and perfect for layering.",
+    "buy_link": "https://example.com/scarf"
+  },
+  {
+    "id": "p8",
+    "name": "Pocket Grimoire Notebook",
+    "type": "Accessories",
+    "price": 12,
+    "image": "https://via.placeholder.com/520x390?text=Notebook",
+    "description": "A small lined notebook with a hard cover — great for notes and cosplay props.",
+    "note": "Sturdy cover and I like the paper quality.",
+    "buy_link": "https://example.com/notebook"
+  }
+]
