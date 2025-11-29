@@ -123,6 +123,10 @@
 				const note = btn.dataset.note || '';
 				const link = btn.dataset.link || '#';
 				modalTitle.textContent = name;
+				// clean up any stray artist nodes if they exist (old append bugs)
+				document.querySelectorAll('.modal-content .artist').forEach(el => {
+					if(el.id !== 'modal-artist') el.remove();
+				});
 				document.getElementById('modal-artist').textContent = artist ? 'By ' + artist : '';
 				modalBody.textContent = note;
 				modalBuy.href = link;

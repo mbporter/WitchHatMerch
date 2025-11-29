@@ -220,21 +220,13 @@
           const item = products.find(pp => pp.id === id);
           if(!item) return;
           modalTitle.textContent = item.name;
+          // remove any stray artist lines that may have been inserted previously
+          document.querySelectorAll('.modal-content .artist').forEach(el => {
+            if(el.id !== 'modal-artist') el.remove();
+          });
           document.getElementById('modal-artist').textContent = item.artist ? 'By ' + item.artist : '';
           modalBody.textContent = item.note || item.description || '';
-          // show artist also in modal
-          if(item.artist){
-            const artistLine = document.createElement('p');
-            artistLine.className = 'artist';
-            artistLine.textContent = 'By ' + item.artist;
-            // insert after title
-            const titleEl = document.getElementById('modal-title');
-            if(titleEl.nextSibling){
-              titleEl.parentNode.insertBefore(artistLine, titleEl.nextSibling);
-            } else {
-              titleEl.parentNode.appendChild(artistLine);
-            }
-          }
+          // artist is shown via the #modal-artist element; do not create new nodes
           modalBuy.href = item.buy_link || '#';
           modal.setAttribute('aria-hidden','false');
           modal.classList.add('open');
