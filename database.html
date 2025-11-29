@@ -87,6 +87,7 @@
         renderFilters();
         renderCharacterFilters();
         renderResults();
+        updateFilterUI();
       }).catch(err => {
         results.innerHTML = '<li class="product-card">Failed to load products (try serving this site with a simple web server).</li>';
         console.error(err);
@@ -122,13 +123,20 @@
       // Order characters by the curated order first, then append any extras found
       const charOrder = ["Qifrey","Olruggio","Coco","Agott","Richeh","Knights Moralis","Brimmed Hats","Others"];
       const found = [...typesSet];
-      const ordered = charOrder.filter(c => typesSet.has(c)).concat(found.filter(c=> !charOrder.includes(c))).sort();
+        const ordered = charOrder.filter(c => typesSet.has(c)).concat(found.filter(c=> !charOrder.includes(c)));
       charFiltersEl.innerHTML = '';
       const allFilter = document.createElement('button');
       allFilter.className = 'btn outline';
       allFilter.textContent = 'All';
       allFilter.addEventListener('click', ()=>{ activeCharacters.clear(); renderResults(); updateFilterUI(); });
       charFiltersEl.appendChild(allFilter);
+        if(ordered.length === 0){
+          const p = document.createElement('p');
+          p.style.color = 'var(--muted)';
+          p.style.fontSize = '0.95rem';
+          p.textContent = 'No character filters available.';
+          charFiltersEl.appendChild(p);
+        }
       ordered.forEach(t => {
         const btn = document.createElement('button');
         btn.className = 'btn outline';
