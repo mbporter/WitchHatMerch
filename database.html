@@ -80,7 +80,12 @@
     let activeTypes = new Set();
     let activeCharacters = new Set();
 
-    fetch('data/products.json')
+    function fetchProducts(){
+      // cache-bust with a timestamp param to avoid stale json on some deployments/CDNs
+      return fetch('data/products.json?cb=' + Date.now());
+    }
+
+    fetchProducts()
       .then(r => r.json())
       .then(data => {
         products = data;
@@ -116,6 +121,17 @@
         filtersEl.appendChild(btn);
       });
     }
+
+    // reload button: fetch and re-render data
+    const reloadBtn = document.createElement('button');
+    reloadBtn.className = 'btn outline';
+    reloadBtn.textContent = 'Reload Data';
+    reloadBtn.addEventListener('click', ()=>{
+      reloadBtn.disabled = true; reloadBtn.textContent = 'Reloading...';
+      fetchProducts().then(r => r.json()).then(d=>{products = d; renderFilters(); renderCharacterFilters(); renderResults(); updateFilterUI(); reloadBtn.disabled=false; reloadBtn.textContent='Reload Data';}).catch(e=>{console.error(e); reloadBtn.disabled=false; reloadBtn.textContent='Reload Data';});
+    });
+    // append next to the Clear button
+    clearBtn.parentNode.insertBefore(reloadBtn, clearBtn.nextSibling);
 
     function renderCharacterFilters(){
       const typesSet = new Set();
