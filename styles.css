@@ -29,7 +29,7 @@ body{
 .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}
 .hero-text h1{font-size:2rem;margin:0 0 .5rem}
 .hero-text p{color:var(--muted);margin:0 0 1rem}
-.hero-art img{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--border)}
+/*.hero-art img{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--border)}*/
 
 .section{padding:2rem 0}
 .section-title{margin:0 0 .25rem;color:var(--teal)}
