@@ -1,9 +1,9 @@
-# Witch Hat Atelier Fan Merch Showcase
+# Witch Hat Atelier Fan Merch database
 
 This is a simple static site showcasing fan-picked Witch Hat Atelier merch.
 
 Files added/updated:
-- `index.html` — homepage (fan-curated picks)
+- `index.html` — homepage (my picks)
 - `database.html` — a searchable and filterable database page for merch
 - `styles.css` — styles (updated theme to white/black/teal/yellow)
 - `data/products.json` — sample product data used by `database.html` (includes `type` and `characters` fields)
@@ -39,8 +39,5 @@ Troubleshooting: JSON changes don't appear on the site
 
 If you still don't see updates after these steps, tell me which hosting service you use and I can help investigate further (CI build logs, branch settings, or cache rules).
 
-If you'd like, I can:
-- Add categories or advanced filters (price ranges, in-stock), or
-- Wire the page to a small CMS or create a simple admin interface to update the JSON.
 
 Enjoy — let me know what to add next!
