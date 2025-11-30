@@ -34,65 +34,65 @@
     "description": "A bookmark in the shape of a BrushBug! Super cute and even has a tassle on its hat!.",
     "note": "Great size for any book!",
     "buy_link": "https://www.etsy.com/shop/forestquills"
-  }//,
-    // {
-    //     "id": "p4",
-    //     "name": "Grimoire Bag",
-    //     "type": "Bags",
-    //     "characters": ["Qifrey","Olruggio"],
-    //     "price": 45,
-    //     "artist": "StudioGrimoire",
-    //     "image": "https://via.placeholder.com/520x390?text=Grimoire+Bag",
-    //     "description": "Canvas tote with Grimoire print — durable for conventions and daily use.",
-    //     "note": "Handles are reinforced and the art holds up to washing.",
-    //     "buy_link": "https://example.com/bag"
-    //   },
-    //   {
-    //     "id": "p5",
-    //     "name": "Charm Keychain",
-    //     "type": "Keychains",
-    //     "characters": ["Coco"],
-    //     "price": 6,
-    //     "artist": "MetalMini",
-    //     "image": "https://via.placeholder.com/520x390?text=Charm+Keychain",
-    //     "description": "A little copper keychain with a hat charm — great for keys or zippers.",
-    //     "note": "Tiny but sturdy; the clasp is solid.",
-    //     "buy_link": "https://example.com/keychain"
-    //   },
-    //   {
-    //     "id": "p6",
-    //     "name": "Sticker Pack: Atelier",
-    //     "type": "Stickers",
-    //     "characters": ["Knights Moralis","Others"],
-    //     "price": 8,
-    //     "artist": "StickerWorks",
-    //     "image": "https://via.placeholder.com/520x390?text=Sticker+Pack",
-    //     "description": "A set of durable vinyl stickers for water bottles and laptops.",
-    //     "note": "Colors are vibrant and they are waterproof.",
-    //     "buy_link": "https://example.com/stickers"
-    //   },
-    //   {
-    //     "id": "p7",
-    //     "name": "Apprentice Scarf",
-    //     "type": "Apparel",
-    //     "characters": ["Agott","Coco"],
-    //     "price": 19,
-    //     "artist": "CozyKnit",
-    //     "image": "https://via.placeholder.com/520x390?text=Apprentice+Scarf",
-    //     "description": "A cozy scarf with a subtle pattern inspired by the manga.",
-    //     "note": "Lightweight and perfect for layering.",
-    //     "buy_link": "https://example.com/scarf"
-    //   },
-    //   {
-    //     "id": "p8",
-    //     "name": "Pocket Grimoire Notebook",
-    //     "type": "Accessories",
-    //     "characters": ["Richeh","Qifrey"],
-    //     "price": 12,
-    //     "artist": "PaperLore",
-    //     "image": "https://via.placeholder.com/520x390?text=Notebook",
-    //     "description": "A small lined notebook with a hard cover — great for notes and cosplay props.",
-    //     "note": "Sturdy cover and I like the paper quality.",
-    //     "buy_link": "https://example.com/notebook"
-    //   }
+  },
+    {
+        "id": "p4",
+        "name": "Grimoire Bag",
+        "type": "Bags",
+        "characters": ["Qifrey","Olruggio"],
+        "price": 45,
+        "artist": "StudioGrimoire",
+        "image": "https://via.placeholder.com/520x390?text=Grimoire+Bag",
+        "description": "Canvas tote with Grimoire print — durable for conventions and daily use.",
+        "note": "Handles are reinforced and the art holds up to washing.",
+        "buy_link": "https://example.com/bag"
+      },
+      {
+        "id": "p5",
+        "name": "Charm Keychain",
+        "type": "Keychains",
+        "characters": ["Coco"],
+        "price": 6,
+        "artist": "MetalMini",
+        "image": "https://via.placeholder.com/520x390?text=Charm+Keychain",
+        "description": "A little copper keychain with a hat charm — great for keys or zippers.",
+        "note": "Tiny but sturdy; the clasp is solid.",
+        "buy_link": "https://example.com/keychain"
+      },
+      {
+        "id": "p6",
+        "name": "Sticker Pack: Atelier",
+        "type": "Stickers",
+        "characters": ["Knights Moralis","Others"],
+        "price": 8,
+        "artist": "StickerWorks",
+        "image": "https://via.placeholder.com/520x390?text=Sticker+Pack",
+        "description": "A set of durable vinyl stickers for water bottles and laptops.",
+        "note": "Colors are vibrant and they are waterproof.",
+        "buy_link": "https://example.com/stickers"
+      },
+      {
+        "id": "p7",
+        "name": "Apprentice Scarf",
+        "type": "Apparel",
+        "characters": ["Agott","Coco"],
+        "price": 19,
+        "artist": "CozyKnit",
+        "image": "https://via.placeholder.com/520x390?text=Apprentice+Scarf",
+        "description": "A cozy scarf with a subtle pattern inspired by the manga.",
+        "note": "Lightweight and perfect for layering.",
+        "buy_link": "https://example.com/scarf"
+      },
+      {
+        "id": "p8",
+        "name": "Pocket Grimoire Notebook",
+        "type": "Accessories",
+        "characters": ["Richeh","Qifrey"],
+        "price": 12,
+        "artist": "PaperLore",
+        "image": "https://via.placeholder.com/520x390?text=Notebook",
+        "description": "A small lined notebook with a hard cover — great for notes and cosplay props.",
+        "note": "Sturdy cover and I like the paper quality.",
+        "buy_link": "https://example.com/notebook"
+      }
 ]
